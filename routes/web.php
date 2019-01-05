@@ -11,11 +11,13 @@
 |
 */
 
+Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+
+   return view('welcome');
 });
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -26,3 +28,16 @@ Route::get('/admin/user/roles',['middleware'=>'role', function(){
         return "Roles Page";
 
 }]);
+
+/* Admin Routes */
+Route::get('/admin/dashboard',['middleware'=>'admin',function(){
+
+
+    return "Welcome to Admin Dashboard";
+
+}]);
+
+Route::get('/admin/login','AdminController@adminLogin')->name('admin.login');
+
+
+
